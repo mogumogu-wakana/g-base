@@ -1,0 +1,20 @@
+# macOS / iCloud / エディタの不要ファイル
+.DS_Store
+*.icloud
+.Trash/
+.Spotlight-V100/
+.fseventsd/
+.TemporaryItems/
+.DocumentRevisions-V100/
+.vscode/
+*.log
+
+# 念のため：OS 大型フォルダが混ざった時の保険
+/Applications/
+/Desktop/
+/Documents/
+/Downloads/
+/Movies/
+/Music/
+/Pictures/
+/Public/
