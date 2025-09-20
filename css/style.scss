@@ -1,0 +1,282 @@
+// Converted from CSS to SCSS
+
+/* 共通系 */
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", "Arial", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  line-height: 1.5;
+  background-color: #191919;
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.wrapper {
+  border: 2px solid red;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 200px 30px 25px;
+
+  h2 {
+    display: inline-block;
+    font-size: 4rem;
+    margin-left: 90px;
+    padding: 0 30px;
+    background: linear-gradient(transparent 55%, #5300ff 55%);
+  }
+}
+
+/* ------------------ concept ------------------ */
+.concept {
+  h2 {
+    margin-left: 2%;
+
+    span {
+      font-size: 3rem;
+    }
+  }
+}
+
+.concept-box {
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  margin: 80px auto;
+  align-items: center;
+  line-height: 2;
+}
+
+.concept-logo {
+  width: 50%;
+}
+
+.concept-text {
+  width: 50%;
+  padding: 2%;
+
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+/* ------------------ game ------------------ */
+.game {
+  h2 {
+    margin-left: 2%;
+  }
+
+  h3 {
+    display: block;
+    font-size: 2rem;
+    margin: 4% auto;
+    text-align: center;
+    width: fit-content;
+  }
+
+  .game-types {
+    text-align: left;
+    margin: 4% 12% 8%;
+    padding: 4% 8%;
+    border: none;
+    background:
+      // 上の線
+      linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) top / 100% 1px no-repeat,
+      // 下の線
+      linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) bottom / 100% 1px no-repeat,
+      // 左の線
+      linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) left / 1px 100% no-repeat,
+      // 右の線
+      linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) right / 1px 100% no-repeat;
+  }
+
+  .game-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.2rem;
+    margin: 0;
+    padding: 0;
+
+    li {
+      white-space: nowrap;
+      line-height: 2;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+/* ------------------ access ------------------ */
+.access {
+  .wrapper {
+    display: flex;
+    background-color: #333;
+    padding: 4%;
+  }
+
+  .access-map {
+    width: 60%;
+
+    iframe {
+      width: 100%;
+    }
+  }
+
+  .access-info {
+    width: 40%;
+    padding: 1%;
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+      font-size: 2rem;
+      margin: 8% auto;
+      background: linear-gradient(transparent 55%, #5300ff 55%);
+      display: inline-block;
+    }
+
+    p {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 10px;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    img {
+      flex-shrink: 0;
+      width: 20px;
+      height: auto;
+      margin-top: 1%;
+    }
+  }
+
+  .info-content {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 20px;
+  }
+}
+
+/* --------- responsive --------- */
+@media screen and (max-width: 767px) {
+  /* ---- 共通系 ---- */
+  .wrapper {
+    width: 100%;
+  }
+
+  /* ---- concept ---- */
+  .concept {
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      margin: 0 0 8%;
+      text-align: center;
+    }
+  }
+
+  .concept-box {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .concept-logo {
+    width: 90%;
+    margin: 4% auto;
+    padding-top: 8%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .concept-text {
+    width: 100%;
+    margin: 4% 0 16%;
+    padding-left: 16%;
+
+    p {
+      font-size: 1.25rem;
+      line-height: 2.5;
+    }
+  }
+
+  /* ---- game ---- */
+  .game {
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h2 {
+        margin: 8% auto;
+        text-align: center;
+        display: inline-block;
+      }
+
+      h3 {
+        margin: 4%;
+      }
+    }
+
+    .game-types {
+      width: 78%;
+      margin: 16%;
+      padding: 8%;
+    }
+  }
+
+  /* ---- access ---- */
+  .access {
+    .wrapper {
+      flex-direction: column-reverse;
+      padding: 16% 4%;
+    }
+
+    .access-map {
+      width: 100%;
+    }
+
+    .access-info {
+      width: 100%;
+      font-weight: bold;
+    }
+
+    .info-content {
+      width: 80%;
+      padding: 8% 0;
+
+      p {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
