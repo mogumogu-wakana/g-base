@@ -42,6 +42,7 @@ img {
 
 /* ------------------ concept ------------------ */
 .concept-box {
+    border: 2px solid orange;
     display: flex;
     margin: 60px 90px;
     padding: 30px;
@@ -54,8 +55,36 @@ img {
 }
 
 .concept-logo {
+    position: relative;
     width: 50%;
-    margin: 20px;
+    min-height: clamp(140px, 28vw, 260px);
+    margin: 0;
+}
+
+.concept-logo .logo-frame {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    padding: 4%;
+    background:
+        linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) top / 100% 1px no-repeat,
+        linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) bottom / 100% 1px no-repeat,
+        linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) left / 1px 100% no-repeat,
+        linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) right / 1px 100% no-repeat;
+}
+
+.concept-logo .logo-image {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+}
+
+.concept-logo .logo-image img {
+    width: 80%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .5));
 }
 
 .concept-text {
@@ -130,12 +159,10 @@ img {
     display: flex;
     background-color: #333;
     padding: 4%;
-
 }
 
 .access-map {
-    /* border: 2px solid orange ; */
-    width: 60%;
+    width: 50%;
 }
 
 .access-map iframe {
@@ -143,8 +170,7 @@ img {
 }
 
 .access-info {
-    /* border: 2px solid orange ; */
-    width: 40%;
+    width: 50%;
     padding: 1%;
     color: #fff;
     font-size: 0.8rem;
@@ -164,7 +190,6 @@ img {
 }
 
 .info-content {
-    /* border: 2px solid olivedrab; */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -184,7 +209,6 @@ img {
 }
 
 .access-info img {
-    /* border: 1px solid red; */
     width: 20px;
     height: auto;
     margin: 2px;
@@ -196,11 +220,23 @@ img {
 
 /* --------- responsive --------- */
 
+/* タブレット版検討中 */
+@media screen and (max-width: 843px) {
+
+    /* ---- access ---- */
+    .access-info h2 {
+        font-size: 1.7rem;
+    }
+}
+
+
+
+
+/* スマホ版 */
 @media screen and (max-width: 767px) {
 
     /* ---- 共通系 ---- */
     .wrapper {
-        /* border: 2px solid red; */
         width: 100%;
     }
 
@@ -218,7 +254,6 @@ img {
     }
 
     .concept-box {
-        /* border: 2px solid red; */
         flex-direction: column;
         width: 100%;
         margin: 0;
@@ -226,10 +261,9 @@ img {
     }
 
     .concept-logo {
-        /* border: 2px solid red; */
-        width: 90%;
-        margin: 4% auto;
-        padding-top: 8%;
+        width: 100%;
+        margin: 8% auto;
+        padding: 20%;
     }
 
     .concept-logo img {
@@ -239,7 +273,7 @@ img {
 
     .concept-text {
         width: 100%;
-        margin: 4% 0 16%;
+        margin: 0 16%;
         padding-left: 16%;
     }
 
@@ -271,7 +305,6 @@ img {
     }
 
     .game-types {
-        /* border: 2px solid orange; */
         width: 78%;
         margin: 16%;
         padding: 8%;
@@ -280,18 +313,15 @@ img {
 
     /* ---- access ---- */
     .access .wrapper {
-        border: 2px solid orange;
         flex-direction: column-reverse;
         padding: 16% 4%;
     }
 
     .access-map {
-        /* border: 2px solid red; */
         width: 100%;
     }
 
     .access-info {
-        /* border: 2px solid blue; */
         width: 100%;
     }
 
@@ -300,7 +330,6 @@ img {
     }
 
     .info-content {
-        /* border: 2px solid red; */
         width: 80%;
         padding: 8% 0;
     }
