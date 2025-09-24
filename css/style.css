@@ -42,16 +42,11 @@ img {
 
 /* ------------------ concept ------------------ */
 .concept-box {
-    max-width: 1000px;
     display: flex;
-    justify-content: space-between;
-    margin: 80px auto;
+    margin: 60px 90px;
+    padding: 30px;
     align-items: center;
     line-height: 2;
-}
-
-.concept h2 {
-    margin-left: 2%;
 }
 
 .concept h2 span {
@@ -60,11 +55,12 @@ img {
 
 .concept-logo {
     width: 50%;
+    margin: 20px;
 }
 
 .concept-text {
     width: 50%;
-    padding: 2%;
+    padding: 20px;
 }
 
 .concept-text p {
@@ -72,6 +68,7 @@ img {
 }
 
 /* ------------------ game ------------------ */
+
 .game h2 {
     margin-left: 2%;
 }
@@ -79,7 +76,7 @@ img {
 .game h3 {
     display: block;
     font-size: 2rem;
-    margin: 4% auto;
+    margin: 0 auto;
     text-align: center;
     width: fit-content;
 }
@@ -133,9 +130,11 @@ img {
     display: flex;
     background-color: #333;
     padding: 4%;
+
 }
 
 .access-map {
+    /* border: 2px solid orange ; */
     width: 60%;
 }
 
@@ -144,6 +143,7 @@ img {
 }
 
 .access-info {
+    /* border: 2px solid orange ; */
     width: 40%;
     padding: 1%;
     color: #fff;
@@ -158,12 +158,13 @@ img {
 
 .access-info h2 {
     font-size: 2rem;
-    margin: 8% auto;
+    margin: 0 0 16px;
     background: linear-gradient(transparent 55%, #5300ff 55%);
     display: inline-block;
 }
 
 .info-content {
+    /* border: 2px solid olivedrab; */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -173,19 +174,21 @@ img {
 }
 
 .access-info p {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    /* border: 1px solid red; */
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
     margin: 0;
-    font-size: 1rem;
 }
 
 .access-info img {
-    flex-shrink: 0;
+    /* border: 1px solid red; */
     width: 20px;
     height: auto;
-    margin-top: 1%;
+    margin: 2px;
+
 }
 
 
@@ -197,10 +200,12 @@ img {
 
     /* ---- 共通系 ---- */
     .wrapper {
+        /* border: 2px solid red; */
         width: 100%;
     }
 
     /* ---- concept ---- */
+
     .concept .wrapper {
         display: flex;
         flex-direction: column;
@@ -213,6 +218,7 @@ img {
     }
 
     .concept-box {
+        /* border: 2px solid red; */
         flex-direction: column;
         width: 100%;
         margin: 0;
@@ -220,6 +226,7 @@ img {
     }
 
     .concept-logo {
+        /* border: 2px solid red; */
         width: 90%;
         margin: 4% auto;
         padding-top: 8%;
@@ -264,6 +271,7 @@ img {
     }
 
     .game-types {
+        /* border: 2px solid orange; */
         width: 78%;
         margin: 16%;
         padding: 8%;
@@ -272,15 +280,18 @@ img {
 
     /* ---- access ---- */
     .access .wrapper {
+        border: 2px solid orange;
         flex-direction: column-reverse;
         padding: 16% 4%;
     }
 
     .access-map {
+        /* border: 2px solid red; */
         width: 100%;
     }
 
     .access-info {
+        /* border: 2px solid blue; */
         width: 100%;
     }
 
@@ -289,6 +300,7 @@ img {
     }
 
     .info-content {
+        /* border: 2px solid red; */
         width: 80%;
         padding: 8% 0;
     }
