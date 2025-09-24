@@ -1,31 +1,70 @@
-// Converted from CSS to SCSS
 
-/* 共通系 */
+@mixin split-border-rectangle($color: #5200ff, $cut: 60%) {
+  // $cut controls the transparent middle length on each side (0–100)
+  $edge: (100% - $cut) / 2; // e.g. 20% when $cut is 60%
+  border: none;
+  background:
+    // top
+    linear-gradient(
+        to right,
+        $color $edge,
+        transparent $edge calc(100% - $edge),
+        $color calc(100% - $edge)
+      )
+      top / 100% 1px no-repeat,
+    // bottom
+    linear-gradient(
+        to right,
+        $color $edge,
+        transparent $edge calc(100% - $edge),
+        $color calc(100% - $edge)
+      )
+      bottom / 100% 1px no-repeat,
+    // left
+    linear-gradient(
+        to bottom,
+        $color $edge,
+        transparent $edge calc(100% - $edge),
+        $color calc(100% - $edge)
+      )
+      left / 1px 100% no-repeat,
+    // right
+    linear-gradient(
+        to bottom,
+        $color $edge,
+        transparent $edge calc(100% - $edge),
+        $color calc(100% - $edge)
+      )
+      right / 1px 100% no-repeat;
+}
+
+// ------------------ base ------------------
+@charset "UTF-8";
+
 html {
   font-size: 100%;
 }
 
 body {
-  font-family: "Helvetica Neue", "Arial", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  font-family: $font-stack;
   line-height: 1.5;
-  background-color: #191919;
-  color: #fff;
+  background-color: $bg;
+  color: $text;
 }
 
 li {
   list-style: none;
 }
-
 a {
   text-decoration: none;
 }
-
 img {
   max-width: 100%;
 }
 
+// ------------------ layout ------------------
 .wrapper {
-  border: 2px solid red;
+  border: 2px solid $test-border;
   max-width: 100%;
   margin: 0 auto;
   padding: 200px 30px 25px;
@@ -35,11 +74,11 @@ img {
     font-size: 4rem;
     margin-left: 90px;
     padding: 0 30px;
-    background: linear-gradient(transparent 55%, #5300ff 55%);
+    @include heading-underline($accent, 55%);
   }
 }
 
-/* ------------------ concept ------------------ */
+// ------------------ concept ------------------
 .concept {
   h2 {
     margin-left: 2%;
@@ -48,31 +87,36 @@ img {
       font-size: 3rem;
     }
   }
-}
 
-.concept-box {
-  max-width: 1000px;
-  display: flex;
-  justify-content: space-between;
-  margin: 80px auto;
-  align-items: center;
-  line-height: 2;
-}
+  &-box {
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    margin: 80px auto;
+    align-items: center;
+    line-height: 2;
+  }
 
-.concept-logo {
-  width: 50%;
-}
+  .concept-logo {
+    width: 50%;
 
-.concept-text {
-  width: 50%;
-  padding: 2%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 
-  p {
-    font-size: 1.25rem;
+  .concept-text {
+    width: 50%;
+    padding: 2%;
+
+    p {
+      font-size: 1.25rem;
+    }
   }
 }
 
-/* ------------------ game ------------------ */
+// ------------------ game ------------------
 .game {
   h2 {
     margin-left: 2%;
@@ -90,16 +134,10 @@ img {
     text-align: left;
     margin: 4% 12% 8%;
     padding: 4% 8%;
-    border: none;
-    background:
-      // 上の線
-      linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) top / 100% 1px no-repeat,
-      // 下の線
-      linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) bottom / 100% 1px no-repeat,
-      // 左の線
-      linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) left / 1px 100% no-repeat,
-      // 右の線
-      linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) right / 1px 100% no-repeat;
+    @include split-border-rectangle(
+      #5200ff,
+      60%
+    ); // 60% middle gap on all sides
   }
 
   .game-list {
@@ -117,7 +155,7 @@ img {
   }
 }
 
-/* ------------------ access ------------------ */
+// ------------------ access ------------------
 .access {
   .wrapper {
     display: flex;
@@ -148,7 +186,7 @@ img {
     h2 {
       font-size: 2rem;
       margin: 8% auto;
-      background: linear-gradient(transparent 55%, #5300ff 55%);
+      @include heading-underline($accent, 55%);
       display: inline-block;
     }
 
@@ -179,14 +217,14 @@ img {
   }
 }
 
-/* --------- responsive --------- */
-@media screen and (max-width: 767px) {
-  /* ---- 共通系 ---- */
+// ------------------ responsive ------------------
+@media screen and (max-width: $bp-sp) {
+  // 共通
   .wrapper {
     width: 100%;
   }
 
-  /* ---- concept ---- */
+  // concept
   .concept {
     .wrapper {
       display: flex;
@@ -198,38 +236,38 @@ img {
       margin: 0 0 8%;
       text-align: center;
     }
-  }
 
-  .concept-box {
-    flex-direction: column;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  .concept-logo {
-    width: 90%;
-    margin: 4% auto;
-    padding-top: 8%;
-
-    img {
+    &-box {
+      flex-direction: column;
       width: 100%;
-      height: auto;
+      margin: 0;
+      padding: 0;
+    }
+
+    .concept-logo {
+      width: 90%;
+      margin: 4% auto;
+      padding-top: 8%;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .concept-text {
+      width: 100%;
+      margin: 4% 0 16%;
+      padding-left: 16%;
+
+      p {
+        font-size: 1.25rem;
+        line-height: 2.5;
+      }
     }
   }
 
-  .concept-text {
-    width: 100%;
-    margin: 4% 0 16%;
-    padding-left: 16%;
-
-    p {
-      font-size: 1.25rem;
-      line-height: 2.5;
-    }
-  }
-
-  /* ---- game ---- */
+  // game
   .game {
     .wrapper {
       display: flex;
@@ -254,7 +292,7 @@ img {
     }
   }
 
-  /* ---- access ---- */
+  // access
   .access {
     .wrapper {
       flex-direction: column-reverse;
