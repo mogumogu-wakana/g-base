@@ -1,49 +1,51 @@
-
-@mixin split-border-rectangle($color: #5200ff, $cut: 60%) {
-  // $cut controls the transparent middle length on each side (0–100)
-  $edge: (100% - $cut) / 2; // e.g. 20% when $cut is 60%
-  border: none;
-  background:
-    // top
-    linear-gradient(
-        to right,
-        $color $edge,
-        transparent $edge calc(100% - $edge),
-        $color calc(100% - $edge)
-      )
-      top / 100% 1px no-repeat,
-    // bottom
-    linear-gradient(
-        to right,
-        $color $edge,
-        transparent $edge calc(100% - $edge),
-        $color calc(100% - $edge)
-      )
-      bottom / 100% 1px no-repeat,
-    // left
-    linear-gradient(
-        to bottom,
-        $color $edge,
-        transparent $edge calc(100% - $edge),
-        $color calc(100% - $edge)
-      )
-      left / 1px 100% no-repeat,
-    // right
-    linear-gradient(
-        to bottom,
-        $color $edge,
-        transparent $edge calc(100% - $edge),
-        $color calc(100% - $edge)
-      )
-      right / 1px 100% no-repeat;
-}
-
-// ------------------ base ------------------
 @charset "UTF-8";
 
-html {
-  font-size: 100%;
+// ================== Variables ==================
+$font-stack: "Helvetica Neue", "Arial", "Hiragino Sans",
+  "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+$bg: #191919;
+$text: #fff;
+$brand: #5300ff;
+
+
+// ================== Mixins ==================
+
+@mixin split-border-rectangle($color: $brand, $cut: 60%) {
+  $edge: calc((100% - #{$cut}) / 2);
+
+  background:
+    // 上
+    linear-gradient(
+      to right,
+      #{$color} #{$edge},
+      transparent #{$edge} calc(100% - #{$edge}),
+      #{$color} calc(100% - #{$edge})
+    ) top / 100% 1px no-repeat,
+    // 下
+    linear-gradient(
+      to right,
+      #{$color} #{$edge},
+      transparent #{$edge} calc(100% - #{$edge}),
+      #{$color} calc(100% - #{$edge})
+    ) bottom / 100% 1px no-repeat,
+    // 左
+    linear-gradient(
+      to bottom,
+      #{$color} #{$edge},
+      transparent #{$edge} calc(100% - #{$edge}),
+      #{$color} calc(100% - #{$edge})
+    ) left / 1px 100% no-repeat,
+    // 右
+    linear-gradient(
+      to bottom,
+      #{$color} #{$edge},
+      transparent #{$edge} calc(100% - #{$edge}),
+      #{$color} calc(100% - #{$edge})
+    ) right / 1px 100% no-repeat;
 }
+
+
+html { font-size: 100%; }
 
 body {
   font-family: $font-stack;
@@ -52,19 +54,12 @@ body {
   color: $text;
 }
 
-li {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-}
-img {
-  max-width: 100%;
-}
+li { list-style: none; }
+a  { text-decoration: none; }
+img { max-width: 100%; }
 
-// ------------------ layout ------------------
 .wrapper {
-  border: 2px solid $test-border;
+  border: 2px solid red;
   max-width: 100%;
   margin: 0 auto;
   padding: 200px 30px 25px;
@@ -74,58 +69,69 @@ img {
     font-size: 4rem;
     margin-left: 90px;
     padding: 0 30px;
-    @include heading-underline($accent, 55%);
+    background: linear-gradient(transparent 55%, $brand 55%);
   }
 }
 
-// ------------------ concept ------------------
+
+// ================== concept ==================
 .concept {
-  h2 {
-    margin-left: 2%;
+  h2 span { font-size: 3rem; }
+}
 
-    span {
-      font-size: 3rem;
-    }
+.concept-box {
+  border: 2px solid orange;
+  display: flex;
+  margin: 60px 90px;
+  padding: 30px;
+  align-items: center;
+  line-height: 2;
+}
+
+.concept-logo {
+  position: relative;
+  width: 50%;
+  min-height: clamp(140px, 28vw, 260px);
+  margin: 0;
+
+  .logo-frame {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    padding: 4%;
+    @include split-border-rectangle($brand, 60%);
   }
 
-  &-box {
-    max-width: 1000px;
-    display: flex;
-    justify-content: space-between;
-    margin: 80px auto;
-    align-items: center;
-    line-height: 2;
-  }
-
-  .concept-logo {
-    width: 50%;
+  .logo-image {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
 
     img {
-      width: 100%;
+      width: 80%;
       height: auto;
-    }
-  }
-
-  .concept-text {
-    width: 50%;
-    padding: 2%;
-
-    p {
-      font-size: 1.25rem;
+      display: block;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .5));
     }
   }
 }
 
-// ------------------ game ------------------
+.concept-text {
+  width: 50%;
+  padding: 20px;
+  p { font-size: 1.25rem; }
+}
+
+
+// ================== game ==================
 .game {
-  h2 {
-    margin-left: 2%;
-  }
+  h2 { margin-left: 2%; }
 
   h3 {
     display: block;
     font-size: 2rem;
-    margin: 4% auto;
+    margin: 0 auto;
     text-align: center;
     width: fit-content;
   }
@@ -134,10 +140,8 @@ img {
     text-align: left;
     margin: 4% 12% 8%;
     padding: 4% 8%;
-    @include split-border-rectangle(
-      #5200ff,
-      60%
-    ); // 60% middle gap on all sides
+    border: none;
+    @include split-border-rectangle($brand, 60%);
   }
 
   .game-list {
@@ -155,7 +159,8 @@ img {
   }
 }
 
-// ------------------ access ------------------
+
+// ================== access ==================
 .access {
   .wrapper {
     display: flex;
@@ -164,15 +169,13 @@ img {
   }
 
   .access-map {
-    width: 60%;
+    width: 50%;
 
-    iframe {
-      width: 100%;
-    }
+    iframe { width: 100%; }
   }
 
   .access-info {
-    width: 40%;
+    width: 50%;
     padding: 1%;
     color: #fff;
     font-size: 0.8rem;
@@ -185,25 +188,24 @@ img {
 
     h2 {
       font-size: 2rem;
-      margin: 8% auto;
-      @include heading-underline($accent, 55%);
+      margin: 0 0 16px;
+      background: linear-gradient(transparent 55%, $brand 55%);
       display: inline-block;
     }
 
     p {
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       gap: 10px;
       margin: 0;
-      font-size: 1rem;
     }
 
     img {
-      flex-shrink: 0;
       width: 20px;
       height: auto;
-      margin-top: 1%;
+      margin: 2px;
     }
   }
 
@@ -217,14 +219,23 @@ img {
   }
 }
 
-// ------------------ responsive ------------------
-@media screen and (max-width: $bp-sp) {
-  // 共通
-  .wrapper {
-    width: 100%;
-  }
 
-  // concept
+
+// ================== responsive ==================
+
+
+@media screen and (max-width: 843px) {
+  .access {
+    .access-info {
+      h2 { font-size: 1.7rem; }
+    }
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .wrapper { width: 100%; }
+
   .concept {
     .wrapper {
       display: flex;
@@ -236,38 +247,37 @@ img {
       margin: 0 0 8%;
       text-align: center;
     }
+  }
 
-    &-box {
-      flex-direction: column;
+  .concept-box {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .concept-logo {
+    width: 100%;
+    margin: 8% auto;
+    padding: 20%;
+
+    img {
       width: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    .concept-logo {
-      width: 90%;
-      margin: 4% auto;
-      padding-top: 8%;
-
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
-
-    .concept-text {
-      width: 100%;
-      margin: 4% 0 16%;
-      padding-left: 16%;
-
-      p {
-        font-size: 1.25rem;
-        line-height: 2.5;
-      }
+      height: auto;
     }
   }
 
-  // game
+  .concept-text {
+    width: 100%;
+    margin: 0 16%;
+    padding-left: 16%;
+
+    p {
+      font-size: 1.25rem;
+      line-height: 2.5;
+    }
+  }
+
   .game {
     .wrapper {
       display: flex;
@@ -280,9 +290,7 @@ img {
         display: inline-block;
       }
 
-      h3 {
-        margin: 4%;
-      }
+      h3 { margin: 4%; }
     }
 
     .game-types {
@@ -292,29 +300,21 @@ img {
     }
   }
 
-  // access
   .access {
     .wrapper {
       flex-direction: column-reverse;
       padding: 16% 4%;
     }
 
-    .access-map {
-      width: 100%;
-    }
-
-    .access-info {
-      width: 100%;
-      font-weight: bold;
-    }
+    .access-map { width: 100%; }
+    .access-info { width: 100%; font-weight: bold; }
 
     .info-content {
       width: 80%;
       padding: 8% 0;
 
-      p {
-        font-size: 1.3rem;
-      }
+      p { font-size: 1.3rem; }
     }
   }
 }
+
