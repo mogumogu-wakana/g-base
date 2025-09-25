@@ -1,3 +1,8 @@
+@charset "UTF-8";
+
+/* ========================================
+   Base / Common
+======================================== */
 html {
   font-size: 100%;
 }
@@ -35,17 +40,16 @@ img {
   background: linear-gradient(transparent 55%, #5300ff 55%);
 }
 
-.concept h2 span {
-  font-size: 3rem;
-}
-
+/* ========================================
+   Concept
+======================================== */
 .concept-box {
-  border: 2px solid orange;
-  display: flex;
-  margin: 60px 90px;
-  padding: 30px;
-  align-items: center;
-  line-height: 2;
+    border: 2px solid orange;
+    display: flex;
+    align-items: center;
+    margin: 60px 90px;
+    padding: 30px;
+    line-height: 2;
 }
 
 .concept-logo {
@@ -55,11 +59,15 @@ img {
   margin: 0;
 }
 .concept-logo .logo-frame {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  padding: 4%;
-  background: linear-gradient(to right, #5300ff calc((100% - 60%) / 2), transparent calc((100% - 60%) / 2) calc(100% - calc((100% - 60%) / 2)), #5300ff calc(100% - calc((100% - 60%) / 2))) top/100% 1px no-repeat, linear-gradient(to right, #5300ff calc((100% - 60%) / 2), transparent calc((100% - 60%) / 2) calc(100% - calc((100% - 60%) / 2)), #5300ff calc(100% - calc((100% - 60%) / 2))) bottom/100% 1px no-repeat, linear-gradient(to bottom, #5300ff calc((100% - 60%) / 2), transparent calc((100% - 60%) / 2) calc(100% - calc((100% - 60%) / 2)), #5300ff calc(100% - calc((100% - 60%) / 2))) left/1px 100% no-repeat, linear-gradient(to bottom, #5300ff calc((100% - 60%) / 2), transparent calc((100% - 60%) / 2) calc(100% - calc((100% - 60%) / 2)), #5300ff calc(100% - calc((100% - 60%) / 2))) right/1px 100% no-repeat;
+    position: absolute;
+    inset: 0;
+    padding: 4%;
+    pointer-events: none;
+    background:
+        linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) top / 100% 1px no-repeat,
+        linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) bottom / 100% 1px no-repeat,
+        linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) left / 1px 100% no-repeat,
+        linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) right / 1px 100% no-repeat;
 }
 .concept-logo .logo-image {
   position: absolute;
@@ -68,10 +76,10 @@ img {
   place-items: center;
 }
 .concept-logo .logo-image img {
-  width: 80%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+    display: block;
+    width: 80%;
+    height: auto;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .5));
 }
 
 .concept-text {
@@ -82,23 +90,34 @@ img {
   font-size: 1.25rem;
 }
 
+/* ========================================
+   Game
+======================================== */
 .game h2 {
   margin-left: 2%;
 }
 .game h3 {
-  display: block;
-  font-size: 2rem;
-  margin: 0 auto;
-  text-align: center;
-  width: -moz-fit-content;
-  width: fit-content;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 2rem;
+    text-align: center;
 }
-.game .game-types {
-  text-align: left;
-  margin: 4% 12% 8%;
-  padding: 4% 8%;
-  border: none;
-  background: linear-gradient(to right, #5300ff calc((100% - 60%) / 2), transparent calc((100% - 60%) / 2) calc(100% - calc((100% - 60%) / 2)), #5300ff calc(100% - calc((100% - 60%) / 2))) top/100% 1px no-repeat, linear-gradient(to right, #5300ff calc((100% - 60%) / 2), transparent calc((100% - 60%) / 2) calc(100% - calc((100% - 60%) / 2)), #5300ff calc(100% - calc((100% - 60%) / 2))) bottom/100% 1px no-repeat, linear-gradient(to bottom, #5300ff calc((100% - 60%) / 2), transparent calc((100% - 60%) / 2) calc(100% - calc((100% - 60%) / 2)), #5300ff calc(100% - calc((100% - 60%) / 2))) left/1px 100% no-repeat, linear-gradient(to bottom, #5300ff calc((100% - 60%) / 2), transparent calc((100% - 60%) / 2) calc(100% - calc((100% - 60%) / 2)), #5300ff calc(100% - calc((100% - 60%) / 2))) right/1px 100% no-repeat;
+
+.game-types {
+    border: none;
+    margin: 4% 12% 8%;
+    padding: 4% 8%;
+    text-align: left;
+    background:
+        /* 上の線 */
+        linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) top / 100% 1px no-repeat,
+        /* 下の線 */
+        linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) bottom / 100% 1px no-repeat,
+        /* 左の線 */
+        linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) left / 1px 100% no-repeat,
+        /* 右の線 */
+        linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) right / 1px 100% no-repeat;
 }
 .game .game-list {
   display: flex;
@@ -107,10 +126,11 @@ img {
   margin: 0;
   padding: 0;
 }
-.game .game-list li {
-  white-space: nowrap;
-  line-height: 2;
-  font-size: 1.3rem;
+
+.game-list li {
+    line-height: 2;
+    white-space: nowrap;
+    font-size: 1.3rem;
 }
 
 .drink-menu {
@@ -153,122 +173,289 @@ img {
 .access .access-map iframe {
   width: 100%;
 }
-.access .access-info {
-  width: 50%;
-  padding: 1%;
-  color: #fff;
-  font-size: 0.8rem;
-  line-height: 1.8;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.access .access-info h2 {
-  font-size: 2rem;
-  margin: 0 0 16px;
-  background: linear-gradient(transparent 55%, #5300ff 55%);
-  display: inline-block;
-}
-.access .access-info p {
-  font-size: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin: 0;
-}
-.access .access-info img {
-  width: 20px;
-  height: auto;
-  margin: 2px;
-}
-.access .info-content {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 20px;
+
+.access-info {
+    display: flex;
+    width: 50%;
+    padding: 1%;
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1.8;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-@media screen and (max-width: 843px) {
-  .access .access-info h2 {
-    font-size: 1.7rem;
-  }
-}
-@media screen and (max-width: 767px) {
-  .wrapper {
-    width: 100%;
-  }
-  .concept .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .concept h2 {
-    margin: 0 0 8%;
-    text-align: center;
-  }
-  .concept-box {
-    flex-direction: column;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  .concept-logo {
-    width: 100%;
-    margin: 8% auto;
-    padding: 20%;
-  }
-  .concept-logo img {
-    width: 100%;
-    height: auto;
-  }
-  .concept-text {
-    width: 100%;
-    margin: 0 16%;
-    padding-left: 16%;
-  }
-  .concept-text p {
-    font-size: 1.25rem;
-    line-height: 2.5;
-  }
-  .game .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .game .wrapper h2 {
-    margin: 8% auto;
-    text-align: center;
+.access-info h2 {
     display: inline-block;
-  }
-  .game .wrapper h3 {
-    margin: 4%;
-  }
-  .game .game-types {
-    width: 78%;
-    margin: 16%;
-    padding: 8%;
-  }
-  .access .wrapper {
-    flex-direction: column-reverse;
-    padding: 16% 4%;
-  }
-  .access .access-map {
-    width: 100%;
-  }
-  .access .access-info {
-    width: 100%;
-    font-weight: bold;
-  }
-  .access .info-content {
-    width: 80%;
-    padding: 8% 0;
-  }
-  .access .info-content p {
-    font-size: 1.3rem;
-  }
-}/*# sourceMappingURL=style.css.map */
+    margin: 0 0 16px;
+    font-size: 2rem;
+    background: linear-gradient(transparent 55%, #5300ff 55%);
+}
+
+.info-content {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 20px;
+}
+
+.access-info p {
+    /* border: 1px solid red; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.access-info img {
+    width: 20px;
+    height: auto;
+    margin: 2px;
+}
+
+/* ========================================
+   Responsive (General)
+======================================== */
+/* Tablet */
+@media screen and (max-width: 843px) {
+    .access-info h2 {
+        font-size: 1.7rem;
+    }
+}
+
+/* Smartphone */
+@media screen and (max-width: 767px) {
+
+    /* Common */
+    .wrapper {
+        width: 100%;
+    }
+
+    /* Concept */
+    .concept .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .concept h2 {
+        margin: 0 0 8%;
+        text-align: center;
+    }
+
+    .concept-box {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .concept-logo {
+        width: 100%;
+        margin: 8% auto;
+        padding: 20%;
+    }
+
+    .concept-logo img {
+        width: 100%;
+        height: auto;
+    }
+
+    .concept-text {
+        width: 100%;
+        margin: 0 16%;
+        padding-left: 16%;
+    }
+
+    .concept-text p {
+        font-size: 1.25rem;
+        line-height: 2.5;
+    }
+
+    .concept-logo img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Game */
+    .game .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game .wrapper h2 {
+        display: inline-block;
+        margin: 8% auto;
+        text-align: center;
+    }
+
+    .game .wrapper h3 {
+        margin: 4%;
+    }
+
+    .game-types {
+        width: 78%;
+        margin: 16%;
+        padding: 8%;
+    }
+
+    /* Access */
+    .access .wrapper {
+        flex-direction: column-reverse;
+        padding: 16% 4%;
+    }
+
+    .access-map {
+        width: 100%;
+    }
+
+    .access-info {
+        width: 100%;
+        font-weight: bold;
+    }
+
+    .info-content {
+        width: 80%;
+        padding: 8% 0;
+    }
+
+    .info-content p {
+        font-size: 1.3rem;
+    }
+}
+
+
+
+
+
+/* ========================================
+   NEWS Page
+======================================== */
+/* ------------------ news page ------------------ */
+.news {
+    width: min(100%, 1100px);
+    padding-inline: 4%;
+    margin: 0 auto;
+}
+
+.news h2 {
+    text-align: center;
+    color: #5200ff;
+    letter-spacing: .1em;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    margin: 4% 0 2.5%;
+}
+
+.news-list {
+    border-top: 1px solid #fff;
+}
+
+.news-row {
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    align-items: center;
+    column-gap: 2.5%;
+    border-bottom: 1px solid #fff;
+    padding-block: clamp(12px, 2.2vw, 22px);
+    color: inherit;
+    text-decoration: none;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+.news-row:hover {
+    background-color: rgba(82, 0, 255, .08);
+    border-color: #a07cff;
+
+}
+
+.news-row:focus-visible {
+    outline: 2px solid #5200ff;
+    outline-offset: 3px;
+}
+
+/* 日付 */
+.news-row .date {
+    display: inline-block;
+    color: #5200ff;
+}
+
+.news-row .date-time {
+    display: block;
+    line-height: 1.1;
+}
+
+.date-year {
+    margin: 0 0 .1em 12%;
+    letter-spacing: .04em;
+    font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+}
+
+.date-year span {
+    opacity: .8;
+}
+
+.date-md {
+    margin: 0 0 0 12%;
+    font-size: clamp(1.6rem, 3.8vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+
+.date-md .date-wday {
+    padding-left: 6px;
+    font-size: clamp(.7rem, 1.3vw, 1rem);
+    font-weight: 700;
+}
+
+/* 本文 */
+.news-text {
+    line-height: 1.9;
+    padding-left: clamp(0px, 1vw, 8px);
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+/* More */
+.link-text {
+    margin-top: clamp(18px, 3vw, 30px);
+    text-align: center;
+}
+
+.link-text a {
+    color: #5200ff;
+    font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    font-weight: 700;
+    letter-spacing: .09em;
+}
+
+/* ---- responsive ---- */
+@media (max-width: 1024px) {
+    .news-row {
+        grid-template-columns: 28% 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    .news-row {
+        grid-template-columns: 1fr;
+        row-gap: 6px;
+        padding-block: 16px;
+    }
+
+    .date-year,
+    .date-md {
+        margin-left: 0;
+    }
+
+    .news-text {
+        padding-left: 0;
+        line-height: 1.8;
+    }
+}
