@@ -1,57 +1,16 @@
 @charset "UTF-8";
 
-// ================== Variables ==================
-$font-stack: "Helvetica Neue", "Arial", "Hiragino Sans",
-  "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-$bg: #191919;
-$text: #fff;
-$brand: #5300ff;
-
-
-// ================== Mixins ==================
-
-@mixin split-border-rectangle($color: $brand, $cut: 60%) {
-  $edge: calc((100% - #{$cut}) / 2);
-
-  background:
-    // 上
-    linear-gradient(
-      to right,
-      #{$color} #{$edge},
-      transparent #{$edge} calc(100% - #{$edge}),
-      #{$color} calc(100% - #{$edge})
-    ) top / 100% 1px no-repeat,
-    // 下
-    linear-gradient(
-      to right,
-      #{$color} #{$edge},
-      transparent #{$edge} calc(100% - #{$edge}),
-      #{$color} calc(100% - #{$edge})
-    ) bottom / 100% 1px no-repeat,
-    // 左
-    linear-gradient(
-      to bottom,
-      #{$color} #{$edge},
-      transparent #{$edge} calc(100% - #{$edge}),
-      #{$color} calc(100% - #{$edge})
-    ) left / 1px 100% no-repeat,
-    // 右
-    linear-gradient(
-      to bottom,
-      #{$color} #{$edge},
-      transparent #{$edge} calc(100% - #{$edge}),
-      #{$color} calc(100% - #{$edge})
-    ) right / 1px 100% no-repeat;
-}
-
-
+/* ========================================
+   Base / Common
+======================================== */
 html { font-size: 100%; }
 
 body {
-  font-family: $font-stack;
+  font-family: "Helvetica Neue", "Arial", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
   line-height: 1.5;
-  background-color: $bg;
-  color: $text;
+  background-color: #191919;
+  color: #fff;
 }
 
 li { list-style: none; }
@@ -69,23 +28,26 @@ img { max-width: 100%; }
     font-size: 4rem;
     margin-left: 90px;
     padding: 0 30px;
-    background: linear-gradient(transparent 55%, $brand 55%);
+    background: linear-gradient(transparent 55%, #5300ff 55%);
   }
 }
 
-
-// ================== concept ==================
-.concept {
-  h2 span { font-size: 3rem; }
-}
-
+/* ========================================
+   Concept
+======================================== */
 .concept-box {
   border: 2px solid orange;
   display: flex;
+  align-items: center;
   margin: 60px 90px;
   padding: 30px;
-  align-items: center;
   line-height: 2;
+}
+
+.concept {
+  h2 {
+    span { font-size: 3rem; }
+  }
 }
 
 .concept-logo {
@@ -97,9 +59,13 @@ img { max-width: 100%; }
   .logo-frame {
     position: absolute;
     inset: 0;
-    pointer-events: none;
     padding: 4%;
-    @include split-border-rectangle($brand, 60%);
+    pointer-events: none;
+    background:
+      linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) top / 100% 1px no-repeat,
+      linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) bottom / 100% 1px no-repeat,
+      linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) left / 1px 100% no-repeat,
+      linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) right / 1px 100% no-repeat;
   }
 
   .logo-image {
@@ -109,9 +75,9 @@ img { max-width: 100%; }
     place-items: center;
 
     img {
+      display: block;
       width: 80%;
       height: auto;
-      display: block;
       filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .5));
     }
   }
@@ -120,42 +86,52 @@ img { max-width: 100%; }
 .concept-text {
   width: 50%;
   padding: 20px;
+
   p { font-size: 1.25rem; }
 }
 
-
-// ================== game ==================
+/* ========================================
+   Game
+======================================== */
 .game {
   h2 { margin-left: 2%; }
 
   h3 {
     display: block;
-    font-size: 2rem;
-    margin: 0 auto;
-    text-align: center;
     width: fit-content;
+    margin: 0 auto;
+    font-size: 2rem;
+    text-align: center;
   }
+}
 
-  .game-types {
-    text-align: left;
-    margin: 4% 12% 8%;
-    padding: 4% 8%;
-    border: none;
-    @include split-border-rectangle($brand, 60%);
-  }
+.game-types {
+  border: none;
+  margin: 4% 12% 8%;
+  padding: 4% 8%;
+  text-align: left;
+  background:
+    /* 上の線 */
+    linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) top / 100% 1px no-repeat,
+    /* 下の線 */
+    linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) bottom / 100% 1px no-repeat,
+    /* 左の線 */
+    linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) left / 1px 100% no-repeat,
+    /* 右の線 */
+    linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) right / 1px 100% no-repeat;
+}
 
-  .game-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem 1.2rem;
-    margin: 0;
-    padding: 0;
+.game-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  margin: 0;
+  padding: 0;
 
-    li {
-      white-space: nowrap;
-      line-height: 2;
-      font-size: 1.3rem;
-    }
+  li {
+    line-height: 2;
+    white-space: nowrap;
+    font-size: 1.3rem;
   }
 }
 
@@ -187,8 +163,9 @@ img { max-width: 100%; }
   > *:not(.smoke) { position: relative; z-index: 1; }
 }
 
-
-// ================== access ==================
+/* ========================================
+   Access
+======================================== */
 .access {
   .wrapper {
     display: flex;
@@ -203,31 +180,32 @@ img { max-width: 100%; }
   }
 
   .access-info {
+    display: flex;
     width: 50%;
     padding: 1%;
     color: #fff;
     font-size: 0.8rem;
     line-height: 1.8;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 
     h2 {
-      font-size: 2rem;
-      margin: 0 0 16px;
-      background: linear-gradient(transparent 55%, $brand 55%);
       display: inline-block;
+      margin: 0 0 16px;
+      font-size: 2rem;
+      background: linear-gradient(transparent 55%, #5300ff 55%);
     }
 
     p {
-      font-size: 1rem;
+      /* border: 1px solid red; */
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       margin: 0;
+      font-size: 1rem;
     }
 
     img {
@@ -238,8 +216,8 @@ img { max-width: 100%; }
   }
 
   .info-content {
-    margin: 0 auto;
     display: flex;
+    margin: 0 auto;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
@@ -247,23 +225,20 @@ img { max-width: 100%; }
   }
 }
 
-
-
-// ================== responsive ==================
-
-
+/* ========================================
+   Responsive (General)
+======================================== */
+/* Tablet */
 @media screen and (max-width: 843px) {
-  .access {
-    .access-info {
-      h2 { font-size: 1.7rem; }
-    }
-  }
+  .access .access-info h2 { font-size: 1.7rem; }
 }
 
-
+/* Smartphone */
 @media screen and (max-width: 767px) {
+  /* Common */
   .wrapper { width: 100%; }
 
+  /* Concept */
   .concept {
     .wrapper {
       display: flex;
@@ -306,6 +281,7 @@ img { max-width: 100%; }
     }
   }
 
+  /* Game */
   .game {
     .wrapper {
       display: flex;
@@ -313,21 +289,22 @@ img { max-width: 100%; }
       align-items: center;
 
       h2 {
+        display: inline-block;
         margin: 8% auto;
         text-align: center;
-        display: inline-block;
       }
 
       h3 { margin: 4%; }
     }
-
-    .game-types {
-      width: 78%;
-      margin: 16%;
-      padding: 8%;
-    }
   }
 
+  .game-types {
+    width: 78%;
+    margin: 16%;
+    padding: 8%;
+  }
+
+  /* Access */
   .access {
     .wrapper {
       flex-direction: column-reverse;
@@ -346,3 +323,117 @@ img { max-width: 100%; }
   }
 }
 
+/* ========================================
+   NEWS Page
+======================================== */
+.news {
+  width: min(100%, 1100px);
+  padding-inline: 4%;
+  margin: 0 auto;
+
+  h2 {
+    text-align: center;
+    color: #5200ff;
+    letter-spacing: .1em;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    margin: 4% 0 2.5%;
+  }
+}
+
+.news-list { border-top: 1px solid #fff; }
+
+.news-row {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  align-items: center;
+  column-gap: 2.5%;
+  border-bottom: 1px solid #fff;
+  padding-block: clamp(12px, 2.2vw, 22px);
+  color: inherit;
+  text-decoration: none;
+  transition: background-color .2s ease, border-color .2s ease;
+
+  &:hover {
+    background-color: rgba(82, 0, 255, .08);
+    border-color: #a07cff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #5200ff;
+    outline-offset: 3px;
+  }
+
+  /* 日付 */
+  .date {
+    display: inline-block;
+    color: #5200ff;
+
+    .date-time {
+      display: block;
+      line-height: 1.1;
+    }
+  }
+
+  /* 本文 */
+  .news-text {
+    line-height: 1.9;
+    padding-left: clamp(0px, 1vw, 8px);
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+}
+
+.date-year {
+  margin: 0 0 .1em 12%;
+  letter-spacing: .04em;
+  font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+
+  span { opacity: .8; }
+}
+
+.date-md {
+  margin: 0 0 0 12%;
+  font-size: clamp(1.6rem, 3.8vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+
+  .date-wday {
+    padding-left: 6px;
+    font-size: clamp(.7rem, 1.3vw, 1rem);
+    font-weight: 700;
+  }
+}
+
+/* More */
+.link-text {
+  margin-top: clamp(18px, 3vw, 30px);
+  text-align: center;
+
+  a {
+    color: #5200ff;
+    font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    font-weight: 700;
+    letter-spacing: .09em;
+  }
+}
+
+/* ---- responsive ---- */
+@media (max-width: 1024px) {
+  .news-row { grid-template-columns: 28% 1fr; }
+}
+
+@media (max-width: 767px) {
+  .news-row {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+    padding-block: 16px;
+
+    .date-year,
+    .date-md { margin-left: 0; }
+
+    .news-text {
+      padding-left: 0;
+      line-height: 1.8;
+    }
+  }
+}
