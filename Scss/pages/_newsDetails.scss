@@ -1,0 +1,143 @@
+@use'../common/mixin' as m;
+
+
+/* ========================================
+    Base / Common
+======================================== */
+html {
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+body {
+  font-family: "Helvetica Neue", "Arial", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  line-height: 1.5;
+  background-color: #191919;
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.wrapper {
+  border: 2px solid red;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 200px 30px 25px;
+
+  h2 {
+    display: inline-block;
+    font-size: 4rem;
+    margin-left: 90px;
+    padding: 0 30px;
+    background: linear-gradient(transparent 55%, #5300ff 55%);
+  }
+}
+
+
+/* ========================================
+    NEWS DETAILS Page（下層ページ第２層）
+======================================== */
+.news__detail {
+  width: min(100%, 1100px);
+  padding-inline: 4%;
+  margin: 0 auto;
+
+  &-wrapper {
+      text-align: center;
+      padding: 48px 0 56px;
+
+
+    h1 {
+      color: #5200ff;
+      // min-width: 50%;
+      letter-spacing: 0.1em;
+      font-weight: 800;
+      font-size: 4rem;
+      margin: 4% 0 2.5%;
+    }
+
+    .news__detail-title {
+      max-width: 48rem;
+      margin: 0 auto;
+      font-size: 1.25rem;
+      line-height: 1.9;
+      opacity: .9;
+    }
+
+    .news__detail-date {
+      margin-top: .625rem;
+      font-size: 1rem;
+      font-weight: 900;
+      color: #5200ff;
+      text-align: center;
+    }
+
+    .news__detail-poster {
+      display: block;
+      margin: 1.75rem auto 0;
+      width: min(100%, 45rem);
+      height: auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,.45);
+    }
+
+    .news__detail-article {
+      margin: 1.75rem auto 0;
+      max-width: 45rem;
+      width: 80%;
+      text-align: left;
+      font-size: 1rem;
+      line-height: 2;
+      letter-spacing: .02em;
+      color: #ddd;
+      text-align: left;
+    }
+  }
+
+    /* BACK リンク */
+  .link-text {
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 0 4rem;
+    width: 100%;
+
+    a {
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: 900;
+      color: #5200ff;
+      text-decoration: none;
+      position: relative;
+      letter-spacing: .08em;
+      transition: opacity 0.4s ease;
+
+      &:hover { 
+        opacity: .75; 
+      }
+    }
+  }
+}
+
+
+
+/* ========================================
+    Responsive (News)
+======================================== */
+/* NotePC */
+@include m.npc {
+
+  }
+
+/* Smartphone */
+@include m.sp {
+
+}
