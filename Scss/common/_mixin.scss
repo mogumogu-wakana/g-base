@@ -1,0 +1,26 @@
+// ブレイクポイント
+$npc: 1024px;
+$tb: 843px;
+$sp: 767px;
+
+
+// ノートPC以下
+@mixin npc {
+  @media (max-width: $npc) {
+    @content;
+  }
+}
+
+// タブレット以下
+@mixin tb {
+  @media (max-width: $tb) {
+    @content;
+  }
+}
+
+// スマホ以下
+@mixin sp {
+  @media (max-width: $sp) {
+    @content;
+  }
+}

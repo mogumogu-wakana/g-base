@@ -1,8 +1,219 @@
+@charset "UTF-8";
+.bg {
+  position: relative;
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+  height: 27.7vh;
+  max-height: 200px;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  overflow: hidden;
+}
+.bg video {
+  position: absolute;
+  top: -175%;
+}
+.bg:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 71.5%;
+  width: 100%;
+  background-color: #000;
+}
+.bg.bg-left:after {
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+.bg.bg-left video {
+  left: -40%;
+}
+.bg.bg-right:after {
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+.bg.bg-right video {
+  right: -26%;
+}
+
+/* ========================================
+    Responsive
+======================================== */
+/* Tablet */
+/* Smartphone */
+@media (max-width: 767px) {
+  .bg {
+    position: relative;
+    margin-left: calc(50% - 50vw);
+    width: 100vw;
+    height: 27.7vh;
+    max-height: 200px;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    overflow: hidden;
+  }
+  .bg video {
+    position: absolute;
+    top: -175%;
+  }
+  .bg:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 71.5%;
+    width: 100%;
+    background-color: #000;
+  }
+  .bg.bg-left:after {
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  }
+  .bg.bg-left video {
+    left: -40%;
+  }
+  .bg.bg-right:after {
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+  }
+  .bg.bg-right video {
+    right: -26%;
+  }
+}
 /* ========================================
     Base / Common
 ======================================== */
 html {
   font-size: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", "Arial", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  line-height: 1.5;
+  background-color: #191919;
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 200px 30px 25px;
+}
+.wrapper h2 {
+  display: inline-block;
+  font-size: 4rem;
+  margin-left: 90px;
+  padding: 0 30px;
+  background: linear-gradient(transparent 55%, #5300ff 55%);
+}
+
+/* ========================================
+    NEWS Page（下層ページ第１層）
+======================================== */
+.news {
+  width: min(100%, 1100px);
+  padding-inline: 4%;
+  margin: 0 auto;
+}
+.news h2 {
+  text-align: center;
+  color: #5200ff;
+  letter-spacing: 0.1em;
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  margin: 4% 0 2.5%;
+}
+.news-list {
+  border-top: 1px solid #fff;
+}
+.news-row {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  align-items: center;
+  -moz-column-gap: 2.5%;
+       column-gap: 2.5%;
+  border-bottom: 1px solid #fff;
+  padding-block: clamp(12px, 2.2vw, 22px);
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.news-row:hover {
+  background-color: rgba(82, 0, 255, 0.08);
+  border-color: #a07cff;
+}
+.news-row:focus-visible {
+  outline: 2px solid #5200ff;
+  outline-offset: 3px;
+}
+.news-row .date {
+  display: inline-block;
+  color: #5200ff;
+}
+.news-row .date .date-time {
+  display: block;
+  line-height: 1.1;
+}
+.news-row .date-year {
+  margin: 0 0 0.1em 12%;
+  letter-spacing: 0.04em;
+  font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+}
+.news-row .date-year span {
+  opacity: 0.8;
+}
+.news-row .date-md {
+  margin: 0 0 0 12%;
+  font-size: clamp(1.6rem, 3.8vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.news-row .date-md .date-wday {
+  padding-left: 6px;
+  font-size: clamp(0.7rem, 1.3vw, 1rem);
+  font-weight: 700;
+}
+
+/* ========================================
+    Responsive (News)
+======================================== */
+/* NotePC */
+@media (max-width: 1024px) {
+  .news-row {
+    grid-template-columns: 28% 1fr;
+  }
+}
+/* Smartphone */
+@media (max-width: 767px) {
+  .news-row {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+    padding-block: 16px;
+  }
+  .date-year,
+  .date-md {
+    margin-left: 0;
+  }
+  .news-text {
+    padding-left: 0;
+    line-height: 1.8;
+  }
+}
+/* ========================================
+    Base / Common
+======================================== */
+html {
+  font-size: clamp(14px, 1.2vw, 18px);
 }
 
 body {
@@ -39,10 +250,125 @@ img {
 }
 
 /* ========================================
+    NEWS DETAILS Page（下層ページ第２層）
+======================================== */
+.news__detail {
+  width: min(100%, 1100px);
+  padding-inline: 4%;
+  margin: 0 auto;
+  /* BACK リンク */
+}
+.news__detail-wrapper {
+  text-align: center;
+  padding: 48px 0 56px;
+}
+.news__detail-wrapper h1 {
+  color: #5200ff;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+  font-size: 4rem;
+  margin: 4% 0 2.5%;
+}
+.news__detail-wrapper .news__detail-title {
+  max-width: 48rem;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  line-height: 1.9;
+  opacity: 0.9;
+}
+.news__detail-wrapper .news__detail-date {
+  margin-top: 0.625rem;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #5200ff;
+  text-align: center;
+}
+.news__detail-wrapper .news__detail-poster {
+  display: block;
+  margin: 1.75rem auto 0;
+  width: min(100%, 45rem);
+  height: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.news__detail-wrapper .news__detail-article {
+  margin: 1.75rem auto 0;
+  max-width: 45rem;
+  width: 80%;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  color: #ddd;
+  text-align: left;
+}
+.news__detail .link-text {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 0 4rem;
+  width: 100%;
+}
+.news__detail .link-text a {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #5200ff;
+  text-decoration: none;
+  position: relative;
+  letter-spacing: 0.08em;
+  transition: opacity 0.4s ease;
+}
+.news__detail .link-text a:hover {
+  opacity: 0.75;
+}
+
+/* ========================================
+    Responsive (News)
+======================================== */
+/* NotePC */
+/* Smartphone */
+/* ========================================
+    Base / Common
+======================================== */
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", "Arial", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  line-height: 1.5;
+  background-color: #191919;
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 200px 30px 25px;
+}
+.wrapper h2 {
+  display: inline-block;
+  font-size: 4rem;
+  margin-left: 90px;
+  padding: 0 30px;
+  background: linear-gradient(transparent 55%, #5300ff 55%);
+}
+
+/* ========================================
     Concept
 ======================================== */
 .concept-box {
-  border: 2px solid orange;
   display: flex;
   align-items: center;
   margin: 60px 90px;
@@ -116,32 +442,56 @@ img {
   font-size: 1.3rem;
 }
 
+/* ========================================
+    Menu
+======================================== */
 .drink-menu {
   position: relative;
   background: #191919;
   color: #fff;
 }
-.drink-menu .smoke {
-  position: relative;
-  height: clamp(180px, 30vw, 320px);
-  background: #191919;
+.drink-menu .band {
+  background-color: #000;
   overflow: hidden;
-  isolation: isolate;
-  clip-path: polygon(100% 0, 0 0, 0 100%);
+  padding: 100px 0 100px 0;
 }
-.drink-menu .smoke__video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: 50% 60%;
-     object-position: 50% 60%;
-  filter: contrast(1.3) saturate(1.1) brightness(0.9);
+.drink-menu .band .band__box {
+  display: flex;
 }
-.drink-menu > *:not(.smoke) {
+.drink-menu .band .band__box:nth-of-type(2) {
+  margin-top: -18px;
+}
+.drink-menu .band .band__box .band__text {
   position: relative;
+  margin: 0 15px;
+  font-size: 120px;
+  white-space: nowrap;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #000;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+.drink-menu .band .band__box .band__text--right {
+  transform: translateX(0);
+}
+.drink-menu .band .band__box .band__text--left {
+  transform: translateX(-5000);
+}
+.drink-menu .drink-menu-date {
+  position: relative;
+}
+.drink-menu .drink-menu-date .dmd-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.drink-menu .drink-menu-date .dmd-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50%;
+  height: auto;
   z-index: 1;
 }
 
@@ -201,16 +551,16 @@ img {
 }
 
 /* ========================================
-   Responsive (General)
+    Responsive (General)
 ======================================== */
 /* Tablet */
-@media screen and (max-width: 843px) {
+@media (max-width: 843px) {
   .access-info h2 {
     font-size: 1.7rem;
   }
 }
 /* Smartphone */
-@media screen and (max-width: 767px) {
+@media (max-width: 767px) {
   /* Common */
   .wrapper {
     width: 100%;
@@ -268,99 +618,84 @@ img {
     margin: 16%;
     padding: 8%;
   }
-  /* Access */
-  .access .wrapper {
+  /* menu */
+  .drink-menu {
+    position: relative;
+    background: #191919;
+    color: #fff;
+    /* Access */
+  }
+  .drink-menu .band {
+    background-color: #000;
+    overflow: hidden;
+    padding: 12.5vw 0 15vw 0;
+  }
+  .drink-menu .band .band__box {
+    display: flex;
+  }
+  .drink-menu .band .band__box:nth-of-type(2) {
+    margin-top: -3vw;
+  }
+  .drink-menu .band .band__box .band__text {
+    position: relative;
+    margin: 0 15px;
+    font-size: 12vw;
+    white-space: nowrap;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  .drink-menu .band .band__box .band__text--right {
+    transform: translateX(0);
+  }
+  .drink-menu .band .band__box .band__text--left {
+    display: none;
+    transform: translateX(-5000);
+  }
+  .drink-menu .drink-menu-date {
+    position: relative;
+  }
+  .drink-menu .drink-menu-date .dmd-bg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .drink-menu .drink-menu-date .dmd-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 67.5vw;
+    height: auto;
+    z-index: 1;
+  }
+  .drink-menu .access .wrapper {
     flex-direction: column-reverse;
     padding: 16% 4%;
   }
-  .access-map {
+  .drink-menu .access-map {
     width: 100%;
   }
-  .access-info {
+  .drink-menu .access-info {
     width: 100%;
     font-weight: bold;
   }
-  .info-content {
+  .drink-menu .info-content {
     width: 80%;
     padding: 8% 0;
   }
-  .info-content p {
+  .drink-menu .info-content p {
     font-size: 1.3rem;
   }
+  /* ---- responsive ---- */
 }
-/* ========================================
-   NEWS Page
-======================================== */
-.news {
-  width: min(100%, 1100px);
-  padding-inline: 4%;
-  margin: 0 auto;
-}
-.news h2 {
-  text-align: center;
-  color: #5200ff;
-  letter-spacing: 0.1em;
-  font-size: clamp(2.2rem, 4.5vw, 4rem);
-  margin: 4% 0 2.5%;
-}
-.news-list {
-  border-top: 1px solid #fff;
-}
-.news-row {
-  display: grid;
-  grid-template-columns: 25% 1fr;
-  align-items: center;
-  -moz-column-gap: 2.5%;
-       column-gap: 2.5%;
-  border-bottom: 1px solid #fff;
-  padding-block: clamp(12px, 2.2vw, 22px);
-  color: inherit;
-  text-decoration: none;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-.news-row:hover {
-  background-color: rgba(82, 0, 255, 0.08);
-  border-color: #a07cff;
-}
-.news-row:focus-visible {
-  outline: 2px solid #5200ff;
-  outline-offset: 3px;
-}
-.news-row .date {
-  display: inline-block;
-  color: #5200ff;
-}
-.news-row .date .date-time {
-  display: block;
-  line-height: 1.1;
-}
-.news-row .date-year {
-  margin: 0 0 0.1em 12%;
-  letter-spacing: 0.04em;
-  font-size: clamp(0.9rem, 1.6vw, 1.2rem);
-}
-.news-row .date-year span {
-  opacity: 0.8;
-}
-.news-row .date-md {
-  margin: 0 0 0 12%;
-  font-size: clamp(1.6rem, 3.8vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-.news-row .date-md .date-wday {
-  padding-left: 6px;
-  font-size: clamp(0.7rem, 1.3vw, 1rem);
-  font-weight: 700;
-}
-
-/* ---- responsive ---- */
-@media (max-width: 1024px) {
+@media (max-width: 767px) and (max-width: 1024px) {
   .news-row {
     grid-template-columns: 28% 1fr;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 767px) and (max-width: 767px) {
   .news-row {
     grid-template-columns: 1fr;
     row-gap: 6px;

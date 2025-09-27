@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
-    <link rel="stylesheet" href="Scss/style.scss" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
@@ -103,29 +103,35 @@
         </div>
       </section>
 
+
       <section id="menu" class="drink-menu">
-  <!-- 背景帯（動画＋斜めカット） -->
-  <div class="smoke" aria-hidden="true">
-    <video class="smoke__video" autoplay muted loop playsinline>
-      <source src="video/BG_01.mp4" type="video/mp4" />
-    </video>
-  </div>
+        <div class="bg bg-left fadeInTrigger" aria-hidden="true">
+          <video src="video/bg_smoke.mp4" muted autoplay playsinline loop ></video>
+        </div>
 
-  <div class="drink-menu-title dmt-top">
-    <h2 class="dmt-text">FOOD & DRINK MENU</h2>
-    <h2 class="dmt-shadow">FOOD & DRINK MENU</h2>
-  </div>
+        <div class="band">
+          <div class="band__box">
+            <p class="band__text band__text--right font-en">FOOD & DRINK MENU</p>
+            <p class="band__text band__text--right font-en">FOOD & DRINK MENU</p>
+            <p class="band__text band__text--right font-en">FOOD & DRINK MENU</p>
+            <p class="band__text band__text--right font-en">FOOD & DRINK MENU</p>
+            <p class="band__text band__text--right font-en">FOOD & DRINK MENU</p>
+          </div>
 
-  <div class="drink-menu-title dmt-bottom">
-    <h2 class="dmt-text">FOOD & DRINK MENU</h2>
-    <h2 class="dmt-shadow">FOOD & DRINK MENU</h2>
-  </div>
+          <div class="band__box">
+            <p class="band__text band__text--left font-en">FOOD & DRINK MENU</p>
+            <p class="band__text band__text--left font-en">FOOD & DRINK MENU</p>
+            <p class="band__text band__text--left font-en">FOOD & DRINK MENU</p>
+            <p class="band__text band__text--left font-en">FOOD & DRINK MENU</p>
+            <p class="band__text band__text--left font-en">FOOD & DRINK MENU</p>
+          </div>
+        </div>
 
-  <div class="drink-menu-date">
-    <img class="dmd-bg" src="img/bg-bricks-purple.png" alt="ドリンクメニュー_BG" />
-    <img class="dmd-menu" src="img/drink-menu.png" alt="ドリンクメニュー" />
-  </div>
-</section>
+        <div class="drink-menu-date">
+          <img class="dmd-bg" src="img/bg-bricks-purple.png" alt="ドリンクメニュー_BG" />
+          <img class="dmd-menu" src="img/drink-menu.png" alt="ドリンクメニュー" />
+        </div>
+      </section>
 
       <section class="access" id="section">
         <div class="wrapper">

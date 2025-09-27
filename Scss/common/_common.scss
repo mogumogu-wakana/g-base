@@ -1,0 +1,116 @@
+@charset "UTF-8";
+@use'../common/mixin' as m;
+
+
+.bg {
+  position: relative;
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+  height: 27.7vh;
+  max-height: 200px;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  overflow: hidden;
+
+  video {
+    position: absolute;
+    top: -175%;
+    // width: 106.6vw;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 71.5%;
+    width: 100%;
+    background-color: #000;
+  }
+
+  &.bg-left {
+    &:after {
+      -webkit-clip-path: polygon(0 100%, 100% 0, 100% 100%);
+              clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+
+    video {
+      left: -40%;
+    }
+  }
+
+  &.bg-right {
+    &:after {
+      -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%);
+              clip-path: polygon(0 0, 0 100%, 100% 100%);
+    }
+
+    video {
+      right: -26%;
+    }
+  }
+}
+
+
+/* ========================================
+    Responsive
+======================================== */
+
+/* Tablet */
+@include m.tb {
+
+}
+
+/* Smartphone */
+@include m.sp {
+  .bg {
+  position: relative;
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
+  height: 27.7vh;
+  max-height: 200px;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  overflow: hidden;
+
+  video {
+    position: absolute;
+    top: -175%;
+    // width: 106.6vw;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 71.5%;
+    width: 100%;
+    background-color: #000;
+  }
+
+  &.bg-left {
+    &:after {
+      -webkit-clip-path: polygon(0 100%, 100% 0, 100% 100%);
+              clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+
+    video {
+      left: -40%;
+    }
+  }
+
+  &.bg-right {
+    &:after {
+      -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%);
+              clip-path: polygon(0 0, 0 100%, 100% 100%);
+    }
+
+    video {
+      right: -26%;
+    }
+  }
+}
+}
