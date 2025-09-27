@@ -1,1 +1,200 @@
 @use'../common/mixin' as m;
+
+/* ヘッダー
+------------------------------------------ */
+header {
+    font-size: 16px;
+    height: 60px;
+    font-family: "Rajdhani", sans-serif;
+    padding: 0px 50px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    /* clip-path: polygon(0 0, 100% 1%, 100% 90%, 69% 90%, 65% 100%, 35% 100%, 31% 90%, 0 90%); */
+}
+
+.header-sp {
+    @include m.sp {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+    }
+}
+
+.hamburger-nav {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+/* 固定ヘッダー */
+#header.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    transition: 1.0s;
+}
+
+header ul {
+    display: flex;
+    gap: 40px;
+}
+
+.header-logo {
+    clip-path: polygon(0 0, 100% 0, 86% 100%, 16% 100%);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 300px;
+    z-index: 100;
+    background-color: var(--background);
+    padding: 10px 52px 5px;
+
+    @include m.sp {
+        display: none;
+    }
+
+    & img {
+        max-width: 210px;
+    }
+}
+
+.hamburger {
+    &-menu {
+        @include m.sp {
+            display: flex;
+        }
+    }
+
+    &-link {
+        @include m.sp {
+            display: flex;
+            align-items: center;
+        }
+
+        li {
+            @include m.sp {
+                position: static;
+                width: 120px;
+                text-align: center;
+            }
+
+            &:last-child {
+                @include m.sp {
+                    padding-right: 20px;
+                }
+            }
+        }
+
+        a {
+            @include m.sp {
+                padding: 10px;
+                color: #fff;
+            }
+
+            &:hover {
+                .hamburger-link li a:hover span:first-child {
+                    @include m.sp {
+                        display: none;
+                    }
+                }
+
+                span {
+                    &:nth-child(2) {
+                        @include m.sp {
+                            display: inline;
+                            font-size: 13px;
+                        }
+                    }
+                }
+
+                @include m.sp {
+                    color: #fff;
+                    border-radius: 10px;
+                }
+            }
+
+            span {
+                &:nth-child(2) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &-box {
+        @include m.sp {
+            display: none;
+        }
+    }
+
+
+    /* ハンバーガーボタン */
+    &-btn {
+        @include m.sp {
+            height: 30px;
+            margin-right: 15px;
+            position: relative;
+            width: 30px;
+            z-index: 20;
+            cursor: pointer;
+        }
+
+        span {
+            @include m.sp {
+                background-color: #fff;
+                display: block;
+                height: 1.5px;
+                position: absolute;
+                transition: all 0.5s;
+                width: 100%;
+            }
+
+            .open {
+                @include m.sp {
+                    background-color: #fff;
+                }
+            }
+
+            &:nth-child(1) {
+                @include m.sp {
+                    top: 25%;
+                }
+
+                .open {
+                    @include m.sp {
+                        top: 50%;
+                        transform: rotate(-135deg);
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                @include m.sp {
+                    top: 50%;
+                }
+
+                .open {
+                    @include m.sp {
+                        background-color: transparent;
+                    }
+                }
+            }
+
+            &:nth-child(3) {
+                @include m.sp {
+                    top: 75%;
+                }
+
+                .open {
+                    @include m.sp {
+                        top: 50%;
+                        transform: rotate(135deg);
+                    }
+                }
+            }
+        }
+    }
+}
