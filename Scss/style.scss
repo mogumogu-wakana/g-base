@@ -9,7 +9,8 @@
 @use 'layout/footer';
 
 //news
-@use 'pages/newsDetails';
+
+@use 'pages/newsDetails'; 
 @use 'pages/news';
 
 /* ========================================
@@ -289,6 +290,7 @@ img { max-width: 100%; }
     display: flex;
     background-color: #333;
     padding: 4%;
+  
   }
 
   &-map {
@@ -434,6 +436,7 @@ img { max-width: 100%; }
     }
   }
 
+
   /* Game */
   .game {
     .wrapper {
@@ -495,3 +498,4 @@ img { max-width: 100%; }
     p { font-size: 1.3rem; }
   }
 }
+
