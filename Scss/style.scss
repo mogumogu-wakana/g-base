@@ -8,9 +8,9 @@
 @use 'layout/header';
 @use 'layout/footer';
 
-pages（必要なら pages/news, pages/newsDetails 側を削って本SCSSに統合してOK）
-// /* @use 'pages/news';
-@use 'pages/newsDetails'; */
+//news
+@use 'pages/newsDetails'; 
+@use 'pages/news';
 
 /* ========================================
     BG band / frame
@@ -29,7 +29,7 @@ pages（必要なら pages/news, pages/newsDetails 側を削って本SCSSに統�
   background-size: auto 100%;
   overflow: hidden;
   --gutter: max(0px, calc((100vw - var(--container)) / 2));
-
+  background-color: #000;
   video {
     position: absolute;
     top: -175%;
@@ -111,208 +111,6 @@ img { max-width: 100%; }
     margin-left: 90px;
     padding: 0 30px;
     background: linear-gradient(transparent 55%, #5300ff 55%);
-  }
-}
-
-/* ========================================
-    NEWS（一覧）
-======================================== */
-.news {
-  width: min(100%, 1100px);
-  padding-inline: 4%;
-  margin: 0 auto;
-
-  h2 {
-    text-align: center;
-    color: #5200ff;
-    letter-spacing: 0.1em;
-    font-size: clamp(2.2rem, 4.5vw, 4rem);
-    margin: 4% 0 2.5%;
-  }
-
-  .news-list {
-    border-top: 1px solid #fff;
-  }
-
-  .news-row {
-    display: grid;
-    grid-template-columns: 25% 1fr;
-    align-items: center;
-    column-gap: 2.5%;
-    border-bottom: 1px solid #fff;
-    padding-block: clamp(12px, 2.2vw, 22px);
-    color: inherit;
-    text-decoration: none;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-    position: relative;
-    padding-right: 42px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      right: 14px;
-      bottom: 10px;
-      width: 0;
-      height: 0;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 10px solid #fff;
-      pointer-events: none;
-      transition: border-top-color .2s ease, transform .2s ease;
-    }
-
-    &:hover {
-      background-color: rgba(82, 0, 255, 0.08);
-      border-color: #a07cff;
-
-      &::after { border-top-color: #a07cff; }
-    }
-
-    &:focus-visible {
-      outline: 2px solid #5200ff;
-      outline-offset: 3px;
-    }
-
-    .date {
-      display: inline-block;
-      color: #5200ff;
-
-      .date-time {
-        display: block;
-        line-height: 1.1;
-      }
-    }
-
-    .date-year {
-      margin: 0 0 0.1em 12%;
-      letter-spacing: 0.04em;
-      font-size: clamp(0.9rem, 1.6vw, 1.2rem);
-
-      span { opacity: 0.8; }
-    }
-
-    .date-md {
-      margin: 0 0 0 12%;
-      font-size: clamp(1.6rem, 3.8vw, 2.5rem);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-
-      .date-wday {
-        padding-left: 6px;
-        font-size: clamp(0.7rem, 1.3vw, 1rem);
-        font-weight: 700;
-      }
-    }
-  }
-}
-
-
-#news-page {
-  .link-text {
-    display: flex;
-    justify-content: center;
-    padding: 2.5rem 0 4rem;
-    width: 100%;
-
-    a {
-      display: inline-block;
-      font-size: 1rem;
-      font-weight: 900;
-      color: #5200ff; 
-      text-decoration: none;
-      position: relative;
-      letter-spacing: 0.08em;
-      transition: opacity 0.4s ease;
-
-      &:hover { opacity: 0.75; }
-    }
-  }
-}
-
-/* NEWS：レスポンシブ */
-@media (max-width: 1024px) {
-  .news .news-row {
-    grid-template-columns: 28% 1fr;
-  }
-}
-
-@media (max-width: 767px) {
-  .news .news-row {
-    grid-template-columns: 1fr;
-    row-gap: 6px;
-    padding-block: 16px;
-    padding-right: 38px;
-
-    &::after {
-      right: 12px;
-      bottom: 10px;
-    }
-  }
-
-  .news .date-year,
-  .news .date-md { margin-left: 0; }
-
-  .news .news-text {
-    padding-left: 0;
-    line-height: 1.8;
-  }
-}
-
-/* ========================================
-    NEWS DETAILS（個別ページ）
-======================================== */
-.news__detail {
-  width: min(100%, 1100px);
-  padding-inline: 4%;
-  margin: 0 auto;
-
-  &-wrapper {
-    text-align: center;
-    padding: 48px 0 56px;
-
-    h1 {
-      color: #5200ff;
-      letter-spacing: 0.1em;
-      font-weight: 800;
-      font-size: 4rem;
-      margin: 4% 0 2.5%;
-    }
-
-    .news__detail-title {
-      max-width: 48rem;
-      margin: 0 auto;
-      font-size: 1.25rem;
-      line-height: 1.9;
-      opacity: 0.9;
-    }
-
-    .news__detail-date {
-      margin-top: 0.625rem;
-      font-size: 1rem;
-      font-weight: 900;
-      color: #5200ff;
-      text-align: center;
-    }
-
-    .news__detail-poster {
-      display: block;
-      margin: 1.75rem auto 0;
-      width: min(100%, 45rem);
-      height: auto;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-    }
-
-    .news__detail-article {
-      margin: 1.75rem auto 0;
-      max-width: 45rem;
-      width: 80%;
-      text-align: left;
-      font-size: 1rem;
-      line-height: 2;
-      letter-spacing: 0.02em;
-      color: #ddd;
-      text-align: left;
-    }
   }
 }
 
@@ -479,6 +277,7 @@ img { max-width: 100%; }
     display: flex;
     background-color: #333;
     padding: 4%;
+  
   }
 
   &-map {
@@ -578,3 +377,5 @@ img { max-width: 100%; }
       padding-left: 16%;
     }
   }
+
+}
