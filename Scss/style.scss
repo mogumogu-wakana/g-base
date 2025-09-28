@@ -9,6 +9,7 @@
 @use 'layout/footer';
 
 //news
+
 @use 'pages/newsDetails'; 
 @use 'pages/news';
 
@@ -30,6 +31,7 @@
   overflow: hidden;
   --gutter: max(0px, calc((100vw - var(--container)) / 2));
   background-color: #000;
+
   video {
     position: absolute;
     top: -175%;
@@ -135,16 +137,27 @@ img { max-width: 100%; }
     min-height: clamp(140px, 28vw, 260px);
     margin: 0;
 
-    .logo-frame {
+    .logo-frameout {
       position: absolute;
       inset: 0;
-      padding: 4%;
       pointer-events: none;
       background:
-        linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) top/100% 1px no-repeat,
-        linear-gradient(to right, #5200ff 20%, transparent 20% 80%, #5200ff 80%) bottom/100% 1px no-repeat,
-        linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) left/1px 100% no-repeat,
-        linear-gradient(to bottom, #5200ff 20%, transparent 20% 80%, #5200ff 80%) right/1px 100% no-repeat;
+        linear-gradient(to right, #5200ff 15%, transparent 15% 100%, #5200ff 100%) top/100% 1px no-repeat,
+        linear-gradient(to right, #5200ff 0%, transparent 0% 85%, #5200ff 20%) bottom/100% 1px no-repeat,
+        linear-gradient(to bottom, #5200ff 25%, transparent 25% 100%, #5200ff 100%) left/1px 100% no-repeat,
+        linear-gradient(to bottom, #5200ff 0%, transparent 0% 75%, #5200ff 75%) right/1px 100% no-repeat;
+    }
+
+    .logo-framein {
+      position: absolute;
+      inset: 0;
+      margin: 7%;
+      pointer-events: none;
+      background:
+        linear-gradient(to right, #5200ff 0%, transparent 0% 90%, #5200ff 20%) top/100% 1px no-repeat,
+        linear-gradient(to right, #5200ff 10%, transparent 10% 100%, #5200ff 100%) bottom/100% 1px no-repeat,
+        linear-gradient(to bottom, #5200ff 0%, transparent 0% 80%, #5200ff 80%) left/1px 100% no-repeat,
+        linear-gradient(to bottom, #5200ff 20%, transparent 20% 100%, #5200ff 100%) right/1px 100% no-repeat;
     }
 
     .logo-image {
@@ -225,26 +238,26 @@ img { max-width: 100%; }
   .band {
     background-color: #000;
     overflow: hidden;
-    padding: 100px 0 100px 0;
+    padding: 100px 0;
 
     .band__box {
       display: flex;
 
       &:nth-of-type(2) { margin-top: -18px; }
+    }
 
-      .band__text {
-        position: relative;
-        margin: 0 15px;
-        font-size: 120px;
-        white-space: nowrap;
-        line-height: 1.2;
-        font-weight: 500;
-        color: #000;
-        text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-      }
+    .band__text {
+      position: relative;
+      margin: 0 15px;
+      font-size: 120px;
+      white-space: nowrap;
+      line-height: 1.2;
+      font-weight: 500;
+      color: #000;
+      text-shadow: 0 0 15px rgba(255, 255, 255, .5);
 
-      .band__text--right { transform: translateX(0); }
-      .band__text--left { transform: translateX(-5000); }
+      &--right { transform: translateX(0); }
+      &--left  { transform: translateX(-5000px); } /* 単位を補完 */
     }
   }
 
@@ -290,7 +303,7 @@ img { max-width: 100%; }
     width: 50%;
     padding: 1%;
     color: #fff;
-    font-size: 0.8rem;
+    font-size: .8rem;
     line-height: 1.8;
     flex-direction: column;
     justify-content: center;
@@ -333,8 +346,46 @@ img { max-width: 100%; }
 /* ========================================
     Responsive (General)
 ======================================== */
-/* Tablet */
+
+/* Tablet（共通TB補助。既存m.tbと併用OK） */
 @include m.tb {
+  .access-info h2 { font-size: 1.7rem; }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .concept-box {
+    gap: clamp(12px, 2.8vw, 32px);
+    align-items: center;
+  }
+
+  .concept-logo {
+    width: 46%;
+    min-height: clamp(180px, 30vw, 280px);
+    padding: 5% 3%;
+  }
+
+  .concept-logo .logo-framein {
+    margin: clamp(5%, 1.2vw, 7%);
+  }
+
+  .concept-logo .logo-image img {
+    width: clamp(64%, 26vw, 76%);
+    max-width: 480px;
+  }
+
+  .concept-text {
+    width: 54%;
+    padding: 12px 2vw;
+  }
+
+  .concept-text p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 2.1;
+  }
+}
+
+
+@media (max-width: 843px) {
   .access-info h2 { font-size: 1.7rem; }
 }
 
@@ -368,6 +419,8 @@ img { max-width: 100%; }
       margin: 8% auto;
       padding: 20%;
 
+      .logo-framein { margin: 5% 0 3% 9%; }
+
       img { width: 100%; height: auto; }
     }
 
@@ -375,7 +428,74 @@ img { max-width: 100%; }
       width: 100%;
       margin: 0 16%;
       padding-left: 16%;
+
+      p {
+        font-size: 1.25rem;
+        line-height: 2.5;
+      }
     }
   }
 
+
+  /* Game */
+  .game {
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h2 {
+        display: inline-block;
+        margin: 8% auto;
+        text-align: center;
+      }
+
+      h3 { margin: 4%; }
+    }
+
+    &-types {
+      width: 78%;
+      margin: 16%;
+      padding: 8%;
+    }
+  }
+
+  /* Menu */
+  .drink-menu {
+    .band {
+      padding: 12.5vw 0 15vw;
+
+      .band__box:nth-of-type(2) { margin-top: -3vw; }
+      .band__text { font-size: 12vw; }
+      .band__text--left { display: none; }
+    }
+
+    .drink-menu-date .dmd-menu {
+      min-width: 67.5vw;
+      height: auto;
+    }
+  }
+
+  /* Access */
+  .access {
+    .wrapper {
+      flex-direction: column-reverse;
+      padding: 16% 4%;
+    }
+  }
+
+  .access-map { width: 100%; }
+
+  .access-info {
+    width: 100%;
+    font-weight: bold;
+  }
+
+  .info-content {
+    width: 80%;
+    padding: 8% 0;
+
+    p { font-size: 1.3rem; }
+  }
 }
+
