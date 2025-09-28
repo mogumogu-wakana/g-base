@@ -1,5 +1,4 @@
-@use'../common/mixin' as m;
-
+@use '../common/mixin' as m;
 
 /* ========================================
     Base / Common
@@ -9,8 +8,8 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", "Arial", "Hiragino Sans",
-    "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  font-family: 'Helvetica Neue', 'Arial', 'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
   line-height: 1.5;
   background-color: #191919;
   color: #fff;
@@ -29,7 +28,6 @@ img {
 }
 
 .wrapper {
-  // border: 2px solid red;
   max-width: 100%;
   margin: 0 auto;
   padding: 200px 30px 25px;
@@ -42,7 +40,6 @@ img {
     background: linear-gradient(transparent 55%, #5300ff 55%);
   }
 }
-
 
 /* ========================================
     NEWS Page（下層ページ第１層）
@@ -75,11 +72,27 @@ img {
     text-decoration: none;
     transition: background-color 0.2s ease, border-color 0.2s ease;
 
+    &::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      bottom: 10px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 10px solid #fff;
+      pointer-events: none;
+      transition: border-top-color 0.2s ease, transform 0.2s ease;
+    }
+
     &:hover {
       background-color: rgba(82, 0, 255, 0.08);
       border-color: #a07cff;
-    }
+    
 
+      &::after { border-top-color: #a07cff; }
+    }
     &:focus-visible {
       outline: 2px solid #5200ff;
       outline-offset: 3px;
@@ -120,6 +133,27 @@ img {
   }
 }
 
+#news-page {
+  .link-text {
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 0 4rem;
+    width: 100%;
+
+    a {
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: 900;
+      color: #5200ff; 
+      text-decoration: none;
+      position: relative;
+      letter-spacing: 0.08em;
+      transition: opacity 0.4s ease;
+
+      &:hover { opacity: 0.75; }
+    }
+  }
+}
 
 /* ========================================
     Responsive (News)
@@ -145,6 +179,38 @@ img {
   }
 
   .news-text {
+    padding-left: 0;
+    line-height: 1.8;
+  }
+}
+
+// 必要かどうかわからないけど一旦持ってきている
+/* NEWS：レスポンシブ */
+@media (max-width: 1024px) {
+  .news .news-row {
+    grid-template-columns: 28% 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .news .news-row {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+    padding-block: 16px;
+    padding-right: 38px;
+
+    &::after {
+      right: 12px;
+      bottom: 10px;
+    }
+  }
+
+  .news .date-year,
+  .news .date-md {
+    margin-left: 0;
+  }
+
+  .news .news-text {
     padding-left: 0;
     line-height: 1.8;
   }
